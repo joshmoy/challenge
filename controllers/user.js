@@ -132,7 +132,7 @@ exports.postSignup = async (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false });
   try {
     // update the next line to find user by email
-    const existingUser = true;
+    const existingUser = await User.findOne({ email: body.email });
     if (existingUser) {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
