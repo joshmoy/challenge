@@ -132,14 +132,14 @@ exports.postSignup = async (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false });
   try {
     // update the next line to find user by email
-    const existingUser = await User.findOne({ email: body.email });
+    const existingUser = true;
     if (existingUser) {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
     }
     const user = new User({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     });
     await user.save();
     req.logIn(user, (err) => {
@@ -179,14 +179,14 @@ exports.postUpdateProfile = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
     if (user.email !== req.body.email) user.emailVerified = false;
-    user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.email = req.body.email || "";
+    user.profile.name = req.body.name || "";
+    user.profile.gender = req.body.gender || "";
+    user.profile.location = req.body.location || "";
+    user.profile.website = req.body.website || "";
     await user.save();
-    req.flash('success', { msg: 'Profile information has been updated.' });
-    res.redirect('/account');
+    req.flash("success", { msg: "Profile information has been updated." });
+    res.redirect("/account");
   } catch (err) {
     if (err.code === 11000) {
       req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
