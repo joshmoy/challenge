@@ -119,7 +119,7 @@ Getting Started
 
 ```bash
 # Get the latest snapshot
-git clone https://github.com/joshmoy/chalenge.git myproject
+git clone https://github.com/joshmoy/challenge.git myproject
 
 # Change directory
 cd myproject

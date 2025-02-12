@@ -29,7 +29,6 @@ bower_components
 
 # Editors
 .idea
-.vscode
 *.iml
 modules.xml
 *.ipr
@@ -50,3 +49,6 @@ Thumbs.db
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
